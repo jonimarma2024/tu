@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Gift for TULI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+    color:white;
+    background: linear-gradient(-45deg,#4b0000,#7a1e3a,#2a0000,#9c2d4d);
+    background-size:400% 400%;
+    animation: gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+    padding:20px;
+}
+
+.step{
+    display:none;
+    animation:fadeSlide 1s ease forwards;
+}
+
+.step.active{
+    display:block;
+}
+
+@keyframes fadeSlide{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    font-size:46px;
+    margin-bottom:15px;
+}
+
+.highlight{
+    color:#ff7b9c;
+}
+
+p{
+    font-size:18px;
+    opacity:0.9;
+}
+
+button{
+    margin-top:35px;
+    padding:14px 35px;
+    border:none;
+    border-radius:40px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    background:white;
+    color:#333;
+    transition:0.3s;
+    animation:pulse 2s infinite;
+}
+
+button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+@keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,255,255,0.5);}
+    70%{box-shadow:0 0 0 15px rgba(255,255,255,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,255,255,0);}
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:#ff4d6d;
+    transform:rotate(45deg);
+    animation: float 10s linear infinite;
+    opacity:0.8;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:#ff4d6d;
+    border-radius:50%;
+}
+
+.heart::before{ top:-10px; left:0; }
+.heart::after{ left:-10px; top:0; }
+
+@keyframes float{
+    0%{transform:translateY(100vh) rotate(45deg);}
+    100%{transform:translateY(-10vh) rotate(45deg);}
+}
+
+.final{
+    font-size:52px;
+    color:#ffccd5;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px #ff4d6d;}
+    to{text-shadow:0 0 30px #ff99aa;}
+}
+
+/* Heart Positions */
+.heart:nth-child(1){ left:10%; animation-duration:8s;}
+.heart:nth-child(2){ left:30%; animation-duration:12s;}
+.heart:nth-child(3){ left:50%; animation-duration:10s;}
+.heart:nth-child(4){ left:70%; animation-duration:14s;}
+.heart:nth-child(5){ left:85%; animation-duration:9s;}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Step 1 -->
+    <div class="step active" id="step1">
+        <h1>A Gift for <span class="highlight">TULI</span></h1>
+        <p>A private interactive experience crafted with love.</p>
+        <button onclick="nextStep()">Enter the Experience ✨</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step" id="step2">
+        <h1>You Are Special 💖</h1>
+        <p>Your smile makes everything brighter and more beautiful.</p>
+        <button onclick="nextStep()">Continue 🌸</button>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step" id="step3">
+        <h1>Every Moment With You ✨</h1>
+        <p>Feels magical, peaceful, and full of warmth.</p>
+        <button onclick="nextStep()">One Last Thing ❤️</button>
+    </div>
+
+    <!-- Final Step -->
+    <div class="step" id="step4">
+        <h1 class="final">Happy Valentine's Day, TULI 💝</h1>
+        <p>May our hearts always beat in harmony.</p>
+    </div>
+
+</div>
+
+<!-- Floating Hearts -->
+<div class="heart"></div>
+<div class="heart"></div>
+<div class="heart"></div>
+<div class="heart"></div>
+<div class="heart"></div>
+
+<script>
+let currentStep = 1;
+
+function nextStep(){
+    document.getElementById("step"+currentStep).classList.remove("active");
+    currentStep++;
+    document.getElementById("step"+currentStep).classList.add("active");
+}
+</script>
+
+</body>
+</html>
